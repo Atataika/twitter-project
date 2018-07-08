@@ -1,7 +1,10 @@
-const initialState = {
-	user: "unknown user"
-}
+const initialState = JSON.parse(localStorage.getItem('regions'))
 
-export default function userInfo (state = initialState) {
-	return state
+export default function regionInfo (state = initialState, action) {
+	switch (action.type) {
+		case "SET_CONTENT":
+			return {...state, content: action.payload}
+		default:
+			return state
+	}
 }

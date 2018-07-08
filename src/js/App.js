@@ -5,9 +5,13 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from './reducers/index'
-import Home from './components/Home'
+import Home from './containers/Home'
 
 const store = createStore(rootReducer)
+
+localStorage.setItem('regions', JSON.stringify([{
+	"content": "Hello World"
+}]))
 
 render (
 	<Provider store={store}>
