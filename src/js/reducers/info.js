@@ -1,9 +1,9 @@
-const initialState = JSON.parse(localStorage.getItem('regions'))
+import { FETCH_TWEETS } from "../actions/types";
 
-export default function regionInfo (state = initialState, action) {
+export default (state = {}, action) => {
 	switch (action.type) {
-		case "SET_CONTENT":
-			return {...state, content: action.payload}
+		case FETCH_TWEETS:
+			return action.payload
 		default:
 			return state
 	}

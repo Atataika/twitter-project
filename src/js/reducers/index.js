@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
-import userInfo from './info'
+import data from './info'
 
-const rootReducer = combineReducers({
-	userInfo
+export default combineReducers({
+	data
 })
-
-export default rootReducer

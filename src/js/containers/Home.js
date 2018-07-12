@@ -11,12 +11,13 @@ export default class Home extends Component {
 	}	
 
 	componentDidMount() {
-		axios.get(`https://restcountries.eu/rest/v2/region/europe`)
+		axios.get(`https://console.firebase.google.com/project/twitter-project-1f1f/database/twitter-project-1f1f/data/`)
 			.then(res => {
 				const items = res.data
 				this.setState({ items })
 				localStorage.setItem('regions', JSON.stringify(items))
 			})
+
 	}
 
 	addItem(name) {

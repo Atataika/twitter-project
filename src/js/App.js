@@ -10,7 +10,7 @@ import Home from './containers/Home'
 const store = createStore(rootReducer)
 
 localStorage.setItem('regions', JSON.stringify([{
-	"content": "Hello World"
+	"name": "Hello World"
 }]))
 
 render (
