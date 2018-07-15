@@ -7,28 +7,26 @@ export default class Home extends Component {
 	constructor() {
 		super()
 		this.addItem = this.addItem.bind(this)
-
 	}	
 
 	componentDidMount() {
-		axios.get(`https://console.firebase.google.com/project/twitter-project-1f1f/database/twitter-project-1f1f/data/`)
+		axios.get(`https://twitter-project-1f1f.firebaseio.com/.json`)
 			.then(res => {
 				const items = res.data
 				this.setState({ items })
-				localStorage.setItem('regions', JSON.stringify(items))
+				localStorage.setItem('tweets', JSON.stringify(items))
 			})
-
 	}
 
 	addItem(name) {
-		let items = JSON.parse(localStorage.getItem('regions'))
+		let items = JSON.parse(localStorage.getItem('tweets'))
 		items.push({ name })
-		localStorage.setItem('regions', JSON.stringify(items))
+		localStorage.setItem('tweets', JSON.stringify(items))
 		this.forceUpdate()
 	}
 
 	render() {
-		let items = JSON.parse(localStorage.getItem('regions'))
+		let items = JSON.parse(localStorage.getItem('tweets'))
 		return (
 			<div className='container'>
 				<Form addItem={this.addItem}/> 

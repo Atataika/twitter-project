@@ -5,17 +5,15 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from './reducers/index'
-import Home from './containers/Home'
+import Rout from './router'
 
 const store = createStore(rootReducer)
 
-localStorage.setItem('regions', JSON.stringify([{
-	"name": "Hello World"
-}]))
+localStorage.setItem('tweets', JSON.stringify([{"name": "debug tweet"}]))
 
 render (
 	<Provider store={store}>
-		<Home />
+		<Rout />
 	</Provider>,
 	document.getElementById('root')
 )

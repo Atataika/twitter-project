@@ -21,7 +21,7 @@ export default class Form extends Component {
 		return (
 			<div className='mx-auto' style={{margin: '30px 0 0 0', width: '40%'}}>
 				<textarea className='form-control mx-auto' onChange={this.handleChange}></textarea>
-				<button className='btn btn-danger' style={{margin: '10px 0 0 0'}} onClick={this.addItem}>Добавить</button>
+				<button className='btn btn-outline-primary' style={{margin: '10px 0 0 0'}} onClick={this.addItem}>Добавить</button>
 			</div> 
 		)
 	}

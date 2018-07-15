@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import data from './info'
+import Usersreducer from './Usersreducer'
 
-export default combineReducers({
-	data
+let reducer = combineReducers({
+	user: Usersreducer
 })
+
+export default reducer
