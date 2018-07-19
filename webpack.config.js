@@ -1,6 +1,8 @@
 let path = require('path');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+let JavaScriptObfuscator = require('webpack-obfuscator');
 
 let conf = {
 	entry: {
@@ -25,20 +27,47 @@ let conf = {
 			}
 		]
 	},
+	plugins: [
+		new ExtractTextPlugin("style.css"),
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, './src/index.html'),
+			filename: 'index.html'
+		}),
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				output: {
+					beautify: false
+				},
+				compress: {
+					inline: false
+				}
+	        }
+		}),
+		new JavaScriptObfuscator ({
+			rotateUnicodeArray: true
+			})
+	]
+};
+
+let devConf = {
 	devServer: {
 		historyApiFallback: {
 			index: '/'
 		},
 		overlay: true,		
 		port: 3000
-	},
-	plugins: [
-		new ExtractTextPlugin("style.css"),
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, './src/index.html'),
-			filename: 'index.html'
-		})
-	]
-};
+	}
+}
 
-module.exports = conf;
+module.exports = function(env) {
+	if (env === 'production'){
+		return conf
+	}
+	if (env === 'development'){
+		return Object.assign(
+			{},
+			conf,
+			devConf
+		)
+	}
+}
